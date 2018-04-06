@@ -91,7 +91,7 @@ class SteamAuth implements SteamAuthInterface
                 ),
             ));
             $result = file_get_contents(self::OPENID_URL, false, $context);
-            preg_match("#^http://steamcommunity.com/openid/id/([0-9]{17,25})#", $get['openid_claimed_id'], $matches);
+            preg_match("#^https?://steamcommunity.com/openid/id/([0-9]{17,25})#", $get['openid_claimed_id'], $matches);
             $this->steamId = is_numeric($matches[1]) ? $matches[1] : 0;
             $this->parseInfo();
 
